@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "newagent-ljxd",
+  "private_key_id": "a444db3390b039a62147dd2bbccaf84eb18f1e70",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDrmudbUyIlkjqI\nvmFXAeWmy+/vvCsca+dyllGOzOBKh2E/528ttphbp+L1AnbvGmeuzqTiFiK5TXk0\nZ0oJArFAFJWS7+wMNbS+j7QEU2oKnc1kn105DX+OsDWM+yWBJAfJVzJPhFucATk5\nEhoKCjo3GYy9BiLZJhcsX8fNl9jnRB4orQcr4eCUtTNbDXWFuqmKTRPj8aCsBsxJ\nJmSuVQWyL1e22lfvq61WYVlx81p1TZs1+VQsKsRSdklh0WsXc+D0zNu6QsHhLd2X\n3NZWcgOhoHo0Di8YruIRwz1WuqGkgtydipQwZysQLO84CRA3gEG2UCUBFpGy9ryy\n0sRUK8x3AgMBAAECggEAUatVBlGndQme07bWrB/iuPJZfismcIgw5wYXSF5ZY0xR\nWCMD5X81ihQEtrR/gLuQ9EX6XsqYh85EtPcW8U+nHJTmElSraMIXILVUi+lUSVDR\nGU+qs3Or40zOi0ulgQH51v+sV2cEkGvWJ6PQNem8q0vmfsGJQ+eRwdaDvo8j52oJ\nhKCpKwV89F7AQjxZhh1osYFS1AVHp/6v76qhBBIyYfS1sOoK8hfVIE5lu3iPF7hZ\n2QFWFwKSQ+RC+6rQHs39FT/bfdmS/XNyS57Rx6ClBob34m5GO6S8FZ8Egp5mkyAT\nPGQFWZmcvPmSrV5x+1H4IM2En9WRFffXnKd1BKjd6QKBgQD94sPx5t4SwnY5OzOa\nbnvF/74hRV3hIkHBYOqcUeHpioYfe0U+wWGBG6yiC4KL5ELfDZrlVgbqyGYdOmbb\nzuEe4ULkBVIPTflNvIf8GNloiqjKURV0WowGu4kOrHGzVKuw+RPIMHZdWiAge+4P\nBOzyfXT3BW6Q3RTSSWd9CUzvyQKBgQDtkSreBaMZxO32v+JgtidvVQ3AlmfwRdfF\nry26dXEJexD7RcROHVxdJVQi5pqEj5gymyx+dmR5NrC4nBLZ3XHcJ8dIyKeCGg9w\niMTazIxDw/eHwPXe96Q1lFFFSp54dNQsrfdnzp4JJFzmL5fGZ64vrXKYIyD9++vZ\nJ1IkMb96PwKBgF/gO9jlM2XoM9cnCTS/llROYNGVrX8wfZ52aALCVUrpef73gU3S\nn2yvM8E6EYGcoLg1HhKPKyuMpCtTe7Z0aMVNkgIkFDodWxFFKiFEjQ2Sl21Xs39u\nFkUQmxCEhKeRSQka9qJ50qksOMerpVncpVJpmDsUvQ1Nv+gtujwYwAopAoGAR8YM\nBXf+htKQcnQWmNFvqJsxxHWsgVMYlYkPb737oLmlr8SsQk1sklesy76QAGzBtsha\n8Poj8NstGRlOOLRGqhT6iGrW8N+euokXsGMMHY0fQ8xwfCSlX+qngx/AMPRbBgSp\nMpuh83EhAApw+Ghqn8zvSjeSyClMYBcZIgZFq1ECgYEAtSq9KaXqexyZMYRrP6QS\n85cCDYXZXeyr7AQAH2B/E5JDye8RbQdvArlP4vE7PUcNui2VE1TGXhq7aHnAOsDN\nqocF2iKoE/29psuVV2IOsIMP2UVrRk8nn4u8QMATrTtEkD3i2Dql3j+SQ+9cNfXg\n66ZSxIgXDL96BMAqsyYPBB8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "dentalchatdialogflow@newagent-ljxd.iam.gserviceaccount.com",
+  "client_id": "103190418517723238670",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dentalchatdialogflow%40newagent-ljxd.iam.gserviceaccount.com"
+}
