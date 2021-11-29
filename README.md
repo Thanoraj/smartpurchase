@@ -2,13 +2,13 @@
 
 This project was implemented to remove thefts in stores when adding items to trolley, to provide the location of sections in store, and to generate automated bills that will be displayed in the app when checking out.
 
-## Author or creator of Mobile Application
-Thanoraj Muthulingam : https://github.com/Thanoraj
+## Author or creator of Mobile Application :
+
+[Thanoraj Muthulingam](https://github.com/Thanoraj)
 
 ## Authors or creators of System : 
-Hariharan Raveenthiran : https://github.com/Hari25483
-
-Santhirarajah Sivasthigan : https://github.com/SanthirarajahSivasthigan
+[Hariharan Raveenthiran](https://github.com/Hari25483)<br/>
+[Santhirarajah Sivasthigan](https://github.com/SanthirarajahSivasthigan)
 
 
 ## About
@@ -25,7 +25,7 @@ You can find the repository for system and Raspberry pi code here: https://githu
 
 ## About this app
 
-This app was designed for android. This app have user authentication, in-app product search function and location finder of product, realtime cart update system, automated chat bot with text recognition and voice recognition. 
+Mobile Application was developed fully on flutter. This app have user authentication, in-app product search function and location finder of product, realtime cart update system, automated chat bot with text recognition and voice recognition. 
 
 for these we used:<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firebase Auth<br/>
