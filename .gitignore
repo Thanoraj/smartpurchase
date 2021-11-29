@@ -47,6 +47,6 @@ web
 windows
 
 #confidential files
-**android/**/google-services.json
+**/android/**/google-services.json
 assets/.json
 /web/
