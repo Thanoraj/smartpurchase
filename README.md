@@ -1,15 +1,29 @@
 # SmartPurchase
 
-An (Sample)app that allows users to donate their pets and adopt others pets.
+This project was implemented to remove thefts in stores when adding items to trolley, to provide the location of sections in store, and to generate automated bills that will be displayed in the app when checking out.
+
+## Author or creator of Mobile Application
+@Thanoraj : https://github.com/Thanoraj
+
+## Authors or creators of System : 
+@Hari25483 : https://github.com/Hari25483
+@SanthirarajahSivasthigan : https://github.com/SanthirarajahSivasthigan
+
+You can find the repository for system and Raspberry pi code here: https://github.com/Hari25483/Super-Market-Smart-Trolley-System
 
 ## About
 
-I created this app to learn more about Flutter and UI/UX in general. This app's design was taken from Dribbble and I followed a tutorial by The Growing Developer on YouTube to complete this app. The app currently has two full screens and a side-drawer. The most fascinating thing about the app is it's unique side-drawer that makes the active page shrink and appears from the back.
+First we are finding the sections of supermarket such as Soap section, Biscuit section, Cosmetics section, Exit etc. by using video processing done to video feed coming the first camera and predicting the sections by using tf-lite model that was trained using the datasets of images of sections in food city. After finding the sections, real time location coordinates will be sent to cloud and the location will be displayed in mobile app.
+
+Let me explain a simple scenario that can be done using my setup.
+
+Assume that you are at the entrance of a food city, and you are going inside. There will be many sections in the foodcity according to the goods it has. First camera in our trolley (i.e) Main camera will find the sections using image processing and tflite, and it will update the location of the customer in the app in realtime.
+
+Assume that you are going to add orange to your cart. First camera will predict whether it is an orange or not, and then when the customer puts that orange in to the trolley, the second camera inside the trolley will predict whether the item that is being put in to the trolley is same or different from the item that was captured by first camera. If item is same in both cameras, then that will be added to the shopping cart. Other wise bill will not be generated, and the shop owners will be notified.
 
 ## Preview
 
 Screenshots from the app:
-
 <img src="images/s4.jpg" width = "200"></img>
 <img src="images/s2.jpg" width = "200"></img>
 <img src="images/s1.jpg" width = "200"></img>

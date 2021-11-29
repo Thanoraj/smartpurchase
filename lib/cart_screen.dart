@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-import 'configuration.dart';
-
 class CartScreen extends StatefulWidget {
   const CartScreen({Key key}) : super(key: key);
 
@@ -25,7 +23,7 @@ class _CartScreenState extends State<CartScreen> {
     //_getData = getCollections();
   }
 
-  getCollections() async {
+  /*getCollections() async {
     collections = [];
     await FirebaseFirestore.instance
         .collection('ItemsCollection')
@@ -37,7 +35,7 @@ class _CartScreenState extends State<CartScreen> {
     });
 
     return collections;
-  }
+  }*/
 
   List resultCollection = [];
 
@@ -72,43 +70,50 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Material(
-            borderRadius: BorderRadius.circular(10),
-            elevation: 5,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+      body: Stack(children: [
+        Container(
+          color: Color(0xfff5f5f5),
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.3,
+            color: Colors.blueAccent,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: Text(
+                    'Smart Purchase',
+                    style: TextStyle(
+                      fontSize: 26,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ),
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    child: Center(
-                      child: Text(
-                        'Smart Purchase',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
+            ),
+            Text(
+              'My Cart',
+              style: TextStyle(fontSize: 30, color: Colors.white),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Expanded(
+              child: Material(
+                borderRadius: BorderRadius.circular(10),
+                elevation: 5,
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  Divider(
-                    thickness: 2,
-                    color: Colors.black,
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                      child: Text(
-                        'Cart',
-                        style: TextStyle(fontSize: 17),
-                      ),
-                    ),
-                  ),
-                  FutureBuilder(
+                  child: FutureBuilder(
                       future: _getData,
                       builder: (context, snap) {
                         if (snap.connectionState == ConnectionState.done) {
@@ -145,7 +150,7 @@ class _CartScreenState extends State<CartScreen> {
                                   return Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 20.0),
-                                    child: Column(children: [
+                                    child: ListView(children: [
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -312,13 +317,16 @@ class _CartScreenState extends State<CartScreen> {
                         } else {
                           return Container();
                         }
-                      })
-                ],
+                      }),
+                ),
               ),
             ),
-          ),
+            SizedBox(
+              height: 10,
+            ),
+          ]),
         ),
-      ),
+      ]),
     );
   }
 }

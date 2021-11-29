@@ -54,6 +54,29 @@ class _LocationScreenState extends State<LocationScreen> {
                       'assets/images/N.jpg',
                       fit: BoxFit.fitWidth,
                     ),
+                    Positioned(
+                      top: 435 *
+                          (MediaQuery.of(context).size.width - 40) *
+                          double.parse(390.toString()) /
+                          (320 * 435),
+                      left: 320 *
+                          double.parse(10.toString()) /
+                          (MediaQuery.of(context).size.width - 40),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.grey,
+                        elevation: 5,
+                        child: Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(3),
+                          ),
+                          child: Text('Exit'),
+                        ),
+                      ),
+                    ),
                     StreamBuilder(
                         stream: FirebaseDatabase.instance
                             .reference()
@@ -107,7 +130,7 @@ class _LocationScreenState extends State<LocationScreen> {
                               'https://firebasestorage.googleapis.com/v0/b/smart-purchase-9df03.appspot.com/o/items%20image%2FBaby%20Powder.png?alt=media&token=01d7f1da-52a4-470c-bf11-0e410bf7be92'),
                         ),
                       ),
-                    )
+                    ),
                   ]),
                 ),
               ],

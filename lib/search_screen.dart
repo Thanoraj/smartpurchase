@@ -2,7 +2,6 @@ import 'package:SmartPurchase/widgets/my_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'configuration.dart';
 import 'screens/location_screen.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -29,16 +28,22 @@ class _SearchScreenState extends State<SearchScreen> {
         .get()
         .then((value) {
       value.docs.forEach((element) {
-        collections[element['query']] = element['results'];
+        List newList = element['results'];
+        //newList.addAll(element['results']);
+        //newList.addAll(element['results']);
+        collections[element['query']] = newList;
       });
+    }).catchError((e) {
+      print(e);
     });
-
     return collections;
   }
 
   List resultCollection = [];
 
   search(text) async {
+    print(collections);
+
     resultCollection = collections[text];
     print(resultCollection);
     resultCollection == null
@@ -52,79 +57,89 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Material(
-            borderRadius: BorderRadius.circular(10),
-            elevation: 5,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: FutureBuilder(
-                  future: _getData,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      return Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(vertical: 20),
-                            child: Center(
-                              child: Text(
-                                'Smart Purchase',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
+      body: Stack(children: [
+        Container(
+          color: Color(0xfff5f5f5),
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.3,
+            color: Colors.blueAccent,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
+          child: FutureBuilder(
+              future: _getData,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20.0),
+                            child: Text(
+                              'Smart Purchase',
+                              style: TextStyle(
+                                fontSize: 26,
+                                color: Colors.white,
                               ),
                             ),
                           ),
-                          Divider(
-                            thickness: 2,
-                            color: Colors.black,
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(horizontal: 20),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 5),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: customShadow,
-                            ),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: TextField(
-                                    controller: _controller,
-                                    textInputAction: TextInputAction.search,
-                                    onSubmitted: (val) {},
-                                    autofocus: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'Search Products',
-                                      contentPadding: EdgeInsets.symmetric(
-                                        horizontal: 10,
-                                        vertical: 5,
-                                      ),
-                                      border: InputBorder.none,
-                                    ),
-                                  ),
-                                ),
-                                IconButton(
-                                  icon: Icon(CupertinoIcons.search),
-                                  onPressed: () {
+                        ),
+                      ),
+                      Text(
+                        'Search',
+                        style: TextStyle(fontSize: 30, color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Material(
+                        borderRadius: BorderRadius.circular(20),
+                        elevation: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5.0, horizontal: 10),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  controller: _controller,
+                                  textInputAction: TextInputAction.search,
+                                  onSubmitted: (val) {
                                     search(
                                         _controller.text.trim().toLowerCase());
                                   },
+                                  autofocus: false,
+                                  decoration: InputDecoration(
+                                    hintText: 'Search Products',
+                                    contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 5,
+                                    ),
+                                    border: InputBorder.none,
+                                  ),
                                 ),
-                              ],
-                            ),
+                              ),
+                              IconButton(
+                                icon: Icon(CupertinoIcons.search),
+                                onPressed: () {
+                                  search(_controller.text.trim().toLowerCase());
+                                },
+                              ),
+                            ],
                           ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(children: [
-                                Material(
+                        ),
+                      ),
+                      if (resultCollection.length > 0)
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 3),
+                            child: Column(children: [
+                              Expanded(
+                                child: Material(
                                   elevation: 5,
                                   child: Container(
                                     //height: 220,
@@ -224,20 +239,19 @@ class _SearchScreenState extends State<SearchScreen> {
                                     ),
                                   ),
                                 ),
-                                Spacer(),
-                              ]),
-                            ),
+                              ),
+                              //Spacer(),
+                            ]),
                           ),
-                        ],
-                      );
-                    } else {
-                      return Container();
-                    }
-                  }),
-            ),
-          ),
+                        ),
+                    ],
+                  );
+                } else {
+                  return Container();
+                }
+              }),
         ),
-      ),
+      ]),
     );
   }
 }

@@ -260,7 +260,28 @@ class _ChatScreenState extends State<ChatScreen> {
                             child: TextField(
                               controller: _controller,
                               textInputAction: TextInputAction.search,
-                              onSubmitted: (val) {},
+                              onSubmitted: (val) {
+                                if (_controller.text != '') {
+                                  FirebaseFirestore.instance
+                                      .collection('chatRoom')
+                                      .doc(widget.chatId)
+                                      .collection('chat')
+                                      .add({
+                                    'receiver': widget.receiver,
+                                    'sender': widget.sender,
+                                    'text': _controller.text.trim(),
+                                    'date': DateTime.now()
+                                        .toIso8601String()
+                                        .toString(),
+                                  });
+                                  if (widget.receiver == 'bot') {
+                                    //print('hi');
+                                    handleSubmitted(
+                                        _controller.text.trim().toLowerCase());
+                                    _controller.clear();
+                                  }
+                                }
+                              },
                               autofocus: false,
                               decoration: InputDecoration(
                                 hintText: 'Search Products',
