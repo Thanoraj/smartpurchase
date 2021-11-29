@@ -20,3 +20,12 @@ Let me explain a simple scenario that can be done using my setup.
 Assume that you are at the entrance of a food city, and you are going inside. There will be many sections in the foodcity according to the goods it has. First camera in our trolley (i.e) Main camera will find the sections using image processing and tflite, and it will update the location of the customer in the app in realtime.
 
 Assume that you are going to add orange to your cart. First camera will predict whether it is an orange or not, and then when the customer puts that orange in to the trolley, the second camera inside the trolley will predict whether the item that is being put in to the trolley is same or different from the item that was captured by first camera. If item is same in both cameras, then that will be added to the shopping cart. Other wise bill will not be generated, and the shop owners will be notified.
+
+## Screenshots from the app:
+<img src="assets/images/screen_shots/img_1.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_2.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_3.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_4.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_5.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_6.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_7.jpg" width = "200"></img>
