@@ -1,5 +1,4 @@
 import 'dart:ui' show FontWeight, Radius;
-import 'package:SmartPurchase/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +18,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double heigth = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    print(heigth);
-    print(width);
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
@@ -41,12 +38,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     children: <Widget>[
                       Image.asset(
                         bgRegister,
-                        height: heigth * 0.40,
+                        height: height * 0.40,
                         width: width,
                         fit: BoxFit.fill,
                       ),
                       Container(
-                        height: heigth * 0.40,
+                        height: height * 0.40,
                         width: width,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -172,7 +169,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   Center(
                       child: SizedBox(
-                          height: heigth * 0.08,
+                          height: height * 0.08,
                           width: width - 30,
                           child: FlatButton(
                             shape: RoundedRectangleBorder(
@@ -206,7 +203,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                   );
                                 }).catchError((e) {
                                   print(e);
-                                  print("Invalid login Details");
                                 });
                               }
                             },
@@ -223,7 +219,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text("Already have an account?"),
-                      FlatButton(
+                      TextButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },

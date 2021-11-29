@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,8 +9,6 @@ import 'package:dialogflow_grpc/dialogflow_grpc.dart';
 import 'package:flutter/services.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:sound_stream/sound_stream.dart';
-import 'chat_room_id_generator.dart';
-import 'configuration.dart';
 import 'constants.dart';
 import 'message_stream.dart';
 import 'typing_tile.dart';
@@ -30,7 +27,6 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   List collections = [];
-  Future _getData;
   TextEditingController _controller = TextEditingController();
   TextEditingController _messageController = TextEditingController();
   String typedMessage = '';
@@ -71,25 +67,23 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> createAccount() async {
+    //ToDo : Create a Dialogflow agent and add the config file to "assets" folder
     final serviceAccount = ServiceAccount.fromString(
         '${(await rootBundle.loadString('assets/service.json'))}');
     dialogflow = DialogflowGrpcV2Beta1.viaServiceAccount(serviceAccount);
   }
 
   void stopStream() async {
-    print('stop');
     await _recorder.stop();
     await _audioStreamSubscription?.cancel();
     await _audioStream?.close();
   }
 
   void handleStream() async {
-    print('start');
     _recorder.start();
 
     _audioStream = BehaviorSubject<List<int>>();
     _audioStreamSubscription = _recorder.audioStream.listen((data) {
-      print(data);
       _audioStream.add(data);
     });
 
@@ -101,7 +95,6 @@ class _ChatScreenState extends State<ChatScreen> {
     ], boost: 20.0);
 
     // Create an audio InputConfig
-
     var config = InputConfigV2beta1(
         encoding: 'AUDIO_ENCODING_LINEAR_16',
         languageCode: 'en-US',
@@ -113,9 +106,6 @@ class _ChatScreenState extends State<ChatScreen> {
         dialogflow.streamingDetectIntent(config, _audioStream);
 
     responseStream.listen((data) {
-      print('----');
-      print(data);
-      String transcript = data.recognitionResult.transcript;
       String queryText = data.queryResult.queryText;
       String fulfillmentText = data.queryResult.fulfillmentText;
 
@@ -147,25 +137,7 @@ class _ChatScreenState extends State<ChatScreen> {
           'date': DateTime.now().toIso8601String().toString(),
         });
       }
-    }, onError: (e) {
-      print(e);
-    }, onDone: () {
-      print('done');
-    });
-  }
-
-  getCollections() async {
-    collections = [];
-    await FirebaseFirestore.instance
-        .collection('ItemsCollection')
-        .get()
-        .then((value) {
-      value.docs.forEach((element) {
-        collections.add(element['CollectionList']);
-      });
-    });
-
-    return collections;
+    }, onError: (e) {}, onDone: () {});
   }
 
   List resultCollection = [];
@@ -188,15 +160,11 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     String fulfillmentText = '';
-    print(text);
 
     try {
       DetectIntentResponse data = await dialogflow.detectIntent(text, 'en-US');
       fulfillmentText = data.queryResult.fulfillmentText;
-      print(fulfillmentText);
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
 
     if (fulfillmentText.isNotEmpty) {
       FirebaseFirestore.instance
@@ -252,7 +220,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
-                        boxShadow: customShadow,
                       ),
                       child: Row(
                         children: [
@@ -275,7 +242,6 @@ class _ChatScreenState extends State<ChatScreen> {
                                         .toString(),
                                   });
                                   if (widget.receiver == 'bot') {
-                                    //print('hi');
                                     handleSubmitted(
                                         _controller.text.trim().toLowerCase());
                                     _controller.clear();
@@ -310,7 +276,6 @@ class _ChatScreenState extends State<ChatScreen> {
                                       .toString(),
                                 });
                                 if (widget.receiver == 'bot') {
-                                  //print('hi');
                                   handleSubmitted(
                                       _controller.text.trim().toLowerCase());
                                   _controller.clear();
@@ -364,7 +329,6 @@ class _ChatScreenState extends State<ChatScreen> {
                                         .toString(),
                                   });
                                   if (widget.receiver == 'bot') {
-                                    //print('hi');
                                     handleSubmitted(typedMessage);
                                   }
                                 }
@@ -384,14 +348,12 @@ class _ChatScreenState extends State<ChatScreen> {
                               ),
                             ),
                             onLongPressStart: (val) {
-                              print(val);
                               setState(() {
                                 _isRecording = true;
                               });
                               handleStream();
                             },
                             onLongPressEnd: (val) {
-                              print(val);
                               setState(() {
                                 _isRecording = false;
                               });

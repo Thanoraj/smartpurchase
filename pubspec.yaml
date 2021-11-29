@@ -24,9 +24,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
-  font_awesome_flutter: ^8.11.0
-  tflite: ^1.1.2
-  image_picker: ^0.8.3+3
   dialogflow_grpc: ^0.2.9
   firebase_auth: ^3.0.2
   cloud_firestore: ^2.5.0
@@ -54,7 +51,6 @@ flutter:
     - assets/
     - assets/images/
     - assets/images/screen_shots/
-    - images/
 
   fonts:
     - family: Circular

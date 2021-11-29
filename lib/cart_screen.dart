@@ -20,22 +20,7 @@ class _CartScreenState extends State<CartScreen> {
   initState() {
     super.initState();
     _getData = getPrice();
-    //_getData = getCollections();
   }
-
-  /*getCollections() async {
-    collections = [];
-    await FirebaseFirestore.instance
-        .collection('ItemsCollection')
-        .get()
-        .then((value) {
-      value.docs.forEach((element) {
-        collections.add(element['CollectionList']);
-      });
-    });
-
-    return collections;
-  }*/
 
   List resultCollection = [];
 
@@ -53,7 +38,7 @@ class _CartScreenState extends State<CartScreen> {
 
   getPrice() async {
     priceList = {};
-
+    // ToDo : Create a collection called "Price List" and add product name as "id" and cost as "price" for each items in separate documents in firestore.
     await FirebaseFirestore.instance
         .collection("Price List")
         .get()
@@ -62,7 +47,6 @@ class _CartScreenState extends State<CartScreen> {
         priceList[element['id']] = element['price'];
       });
     });
-    print(priceList);
     setState(() {});
   }
 
@@ -124,22 +108,14 @@ class _CartScreenState extends State<CartScreen> {
                                   // .child('DHT11')
                                   .onValue,
                               builder: (context, snapShot) {
-                                print(snapShot.hasData);
                                 if (snapShot.hasData &&
                                     !snapShot.hasError &&
                                     snapShot.data != null) {
-                                  print('hii');
-                                  print(snapShot.data.snapshot.value);
-                                  print(priceList);
                                   total = 0;
                                   for (int i = 1;
                                       i - 1 <
                                           snapShot.data.snapshot.value.length;
                                       i++) {
-                                    print(priceList[snapShot
-                                        .data.snapshot.value[i - 1]
-                                        .toString()
-                                        .replaceAll('_', ' ')]);
                                     total += double.parse(priceList[snapShot
                                                 .data.snapshot.value[i - 1]
                                                 .toString()

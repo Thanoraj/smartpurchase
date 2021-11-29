@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'screens/home_page.dart';
 
 void main() async {
+  //ToDo : Before running this app, create a firebase project for this app and system and add the android config file "google-services.json" file to "android/app" folder.
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(

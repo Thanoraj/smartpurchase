@@ -20,10 +20,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double heigth = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    print(heigth);
-    print(width);
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
@@ -42,12 +40,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: <Widget>[
                       Image.asset(
                         bgimage,
-                        height: heigth * 0.40,
+                        height: height * 0.40,
                         width: width,
                         fit: BoxFit.cover,
                       ),
                       Container(
-                        height: heigth * 0.40,
+                        height: height * 0.40,
                         width: width,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -151,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {}, child: Text('Forget Password ?'))),
                   Center(
                       child: SizedBox(
-                          height: heigth * 0.08,
+                          height: height * 0.08,
                           width: width - 30,
                           child: FlatButton(
                             shape: RoundedRectangleBorder(
@@ -172,9 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       builder: (context) => NewHomeScreen(),
                                     ),
                                   );
-                                }).catchError((e) {
-                                  print("Invalid login Details");
-                                });
+                                }).catchError((e) {});
                               }
                             },
                             child: Text(
@@ -189,10 +185,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text("Dont' have an account?"),
+                      Text("Don't have an account?"),
                       TextButton(
                           onPressed: () {
-                            print('hii');
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

@@ -16,7 +16,6 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.width);
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -83,7 +82,6 @@ class _LocationScreenState extends State<LocationScreen> {
                             .child('Coordinates')
                             .onValue,
                         builder: (context, snapShot) {
-                          print(snapShot.hasData);
                           if (snapShot.hasData &&
                               !snapShot.hasError &&
                               snapShot.data != null) {

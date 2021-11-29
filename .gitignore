@@ -39,3 +39,14 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+#web
+web
+
+#windows
+windows
+
+#confidential files
+android/app/google-services.json
+assets/service.json
+assets/services.json

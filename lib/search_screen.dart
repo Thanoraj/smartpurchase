@@ -23,15 +23,13 @@ class _SearchScreenState extends State<SearchScreen> {
 
   getCollections() async {
     collections = {};
+    // ToDo : Create a collection called "ItemsCollection" and add search query text as "query" and results for the query as a array called "results" for each query in separate documents in firestore. Each result in "results" array is a map with name(name of product), left(co-ordinates from left side), top(co-ordinates from top), url(url for product image) keys.
     await FirebaseFirestore.instance
         .collection('ItemsCollection')
         .get()
         .then((value) {
       value.docs.forEach((element) {
-        List newList = element['results'];
-        //newList.addAll(element['results']);
-        //newList.addAll(element['results']);
-        collections[element['query']] = newList;
+        collections[element['query']] = element['results'];
       });
     }).catchError((e) {
       print(e);
@@ -42,10 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
   List resultCollection = [];
 
   search(text) async {
-    print(collections);
-
     resultCollection = collections[text];
-    print(resultCollection);
     resultCollection == null
         ? resultCollection = [
             {'name': 'No results found'}
