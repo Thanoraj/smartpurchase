@@ -28,10 +28,10 @@ You can find the repository for system and Raspberry pi code here: https://githu
 This app was designed for android. This app have user authentication, in-app product search function and location finder of product, realtime cart update system, automated chat bot with text recognition and voice recognition. 
 
 for these we used:<br/>
-&nbsp;&nbsp;&nbsp;Firebase Auth<br/>
-    Firebase Firestore Database<br/>
-    Firebase Realtime Database<br/>
-    Dialogflow ES<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firebase Auth<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firebase Firestore Database<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firebase Realtime Database<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dialogflow ES<br/>
     
 Before running the code in your editor, make sure to complete all ToDos.
 
