@@ -24,7 +24,11 @@ Assume that you are going to add orange to your cart. First camera will predict 
 ## Preview
 
 Screenshots from the app:
-<img src="images/s4.jpg" width = "200"></img>
-<img src="images/s2.jpg" width = "200"></img>
-<img src="images/s1.jpg" width = "200"></img>
-<img src="images/s3.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_1.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_2.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_3.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_4.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_5.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_6.jpg" width = "200"></img>
+<img src="assets/images/screen_shots/img_7.jpg" width = "200"></img>
+
