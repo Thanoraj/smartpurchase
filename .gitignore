@@ -47,6 +47,6 @@ web
 windows
 
 #confidential files
-android/app/google-services.json
-assets/service.json
-assets/services.json
+**android/**/google-services.json
+assets/.json
+/web/
